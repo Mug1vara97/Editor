@@ -5,8 +5,8 @@ Editor::Editor() : cursorPosition(0) {
 }
 
 void Editor::Type(char c) {
-    actionsHistory.push(textBuffer); // сохраняем текущее действие перед изменением текста
-    undoneActionsHistory = std::stack<std::string>(); // очищаем историю отмененных действий
+    actionsHistory.push(textBuffer);
+    undoneActionsHistory = std::stack<std::string>();
     
     textBuffer.insert(cursorPosition, 1, c);
     cursorPosition++;
@@ -26,8 +26,8 @@ void Editor::ShiftRight() {
 
 void Editor::Backspace() {
     if (cursorPosition > 0) {
-        actionsHistory.push(textBuffer); // сохраняем текущее действие перед изменением текста
-        undoneActionsHistory = std::stack<std::string>(); // очищаем историю отмененных действий
+        actionsHistory.push(textBuffer);
+        undoneActionsHistory = std::stack<std::string>();
         
         textBuffer.erase(cursorPosition - 1, 1);
         cursorPosition--;
@@ -52,7 +52,7 @@ void Editor::Redo() {
 
 void Editor::saveAction() {
     actionsHistory.push(textBuffer);
-    undoneActionsHistory = std::stack<std::string>(); // очищаем историю отмененных действий
+    undoneActionsHistory = std::stack<std::string>();
 }
 
 const std::string &Editor::GetText() const {
